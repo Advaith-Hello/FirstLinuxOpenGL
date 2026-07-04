@@ -3,5 +3,8 @@ build/
 
 # Main files
 run_build.sh
+compile_commands.json
+
+# Hidden files
 .directory
 
