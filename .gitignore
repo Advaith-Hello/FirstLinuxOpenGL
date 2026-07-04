@@ -1,0 +1,7 @@
+# Main folders
+build/
+
+# Main files
+run_build.sh
+.directory
+
