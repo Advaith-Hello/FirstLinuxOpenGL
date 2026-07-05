@@ -13,6 +13,15 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
   glViewport(0, 0, width, height);
 }
 
+// Processing input
+void processInput(GLFWwindow *window)
+{
+  // Exit on key ESCAPE
+  if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
+    glfwWindowShouldClose(window);
+  }
+}
+
 
 int main(void)
 {
@@ -27,7 +36,7 @@ int main(void)
 
   // Window creation
   GLFWwindow* window = glfwCreateWindow(WINDOW_X, WINDOW_Y, "Triangle", NULL, NULL);
-  if (window == NULL) {
+ if (window == NULL) {
     std::cout << "Failed to create window (GLFW)" << std::endl;
     glfwTerminate();
     return -1;
@@ -45,7 +54,16 @@ int main(void)
   glfwSetFramebufferSizeCallback(window, framebuffer_size_callback); 
   
   // Mainloop
-  while(!glfwWindowShouldClose(window)) {
+  while(!glfwWindowShouldClose(window))
+  {
+    // Reset and process
+    processInput(window);
+    glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT);
+    
+    // Do other stuff
+
+    // Render and poll
     glfwSwapBuffers(window);
     glfwPollEvents();
   }
