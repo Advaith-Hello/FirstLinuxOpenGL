@@ -28,3 +28,10 @@ target_link_libraries(FirstLinuxOpenGL
     PRIVATE OpenGL::GL
 )
 
+add_custom_command(TARGET FirstLinuxOpenGL POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+        "${CMAKE_CURRENT_SOURCE_DIR}/src/shaders"
+        "$<TARGET_FILE_DIR:FirstLinuxOpenGL>/shaders"
+    COMMENT "Copying shaders to bin..."
+)
+
